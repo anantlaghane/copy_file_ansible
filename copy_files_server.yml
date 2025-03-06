@@ -12,4 +12,4 @@
       copy:
         src: "{{ source_folder }}/{{ item }}"
         dest: "{{ destination_folder }}/"
-      with_items: "{{ selected_files }}"
+      loop: "{{ selected_files }}"
