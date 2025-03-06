@@ -1,5 +1,5 @@
 ---
-- name: Copy selected files to target server
+- name: Copy selected files to server
   hosts: server1
   become: yes
   vars:
