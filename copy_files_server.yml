@@ -8,6 +8,19 @@
     selected_files: []
 
   tasks:
+    - name: Check if selected files already exist
+      stat:
+        path: "{{ destination_folder }}/{{ item }}"
+      register: file_status
+      loop: "{{ selected_files }}"
+
+    - name: Backup existing files before copying
+      command: mv "{{ destination_folder }}/{{ item }}" "{{ destination_folder }}/{{ item }}.bak"
+      when: file_status.results[idx].stat.exists
+      loop: "{{ selected_files }}"
+      loop_control:
+        index_var: idx
+        
     - name: Copy selected files to remote server
       copy:
         src: "{{ source_folder }}/{{ item }}"
