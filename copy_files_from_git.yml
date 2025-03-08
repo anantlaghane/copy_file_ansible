@@ -3,7 +3,7 @@
   hosts: server1
   become: yes
   vars:
-    source_folder: "/var/lib/jenkins/workspace/copy-files-pipeline"
+    source_folder: "/var/lib/jenkins/workspace/copy-files-pipeline/"
     destination_folder: "/home/anantlaghane/Documents"
   tasks:
     - name: Copy all files from Git to target server
