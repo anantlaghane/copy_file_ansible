@@ -5,15 +5,13 @@
   vars:
     source_folder: "/home/anantlaghane/github_files"
     destination_folder: "/home/anantlaghane/github_files"
-    selected_files:
-      - "01_basic_calculator.sh"
-      - "03_num_even_odd.sh"
-      - "06_backup_directory.sh"
+    selected_files: []
+      
 
   tasks:
     - name: Copy selected files to target server
       copy:
         src: "{{ source_folder }}/{{ item }}"
-        dest: "{{ destination_folder }}/"
+        dest: "{{ destination_folder }}//{{ item }}"
       with_items: "{{ selected_files }}"
 
